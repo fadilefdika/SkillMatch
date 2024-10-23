@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectApplicantController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectToolController;
+use App\Http\Controllers\ToolController;
 use App\Http\Controllers\WalletTransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,7 +66,7 @@ Route::middleware('auth')->group(function () {
             });
 
             Route::middleware(('can:manage tools'))->group(function(){
-                Route::resource('tools', ProjectController::class); 
+                Route::resource('tools', ToolController::class); 
             });
     });
 });
