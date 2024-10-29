@@ -17,7 +17,15 @@
         <section id="details" class="container max-w-[1130px] mx-auto flex flex-col sm:flex-row sm:flex-nowrap gap-5 mt-[30px]">
             <div class="bg-white flex flex-col gap-5 p-5 rounded-[20px]">
                 <div class="flex flex-col gap-1">
-                    <div class="font-bold text-xs leading-[18px] text-white bg-[#2E82FE] p-[2px_10px] rounded-full w-fit">HIRING</div>
+                    @if($project->has_finished)
+                        <div class="font-bold text-xs leading-[18px] text-white bg-[#F3445C] p-[2px_10px] rounded-full w-fit">CLOSED</div>
+                    @else
+                        @if($project->has_started)
+                            <div class="font-bold text-xs leading-[18px] text-white bg-[#2E82FE] p-[2px_10px] rounded-full w-fit">IN PROGRESS</div>
+                        @else
+                            <div class="font-bold text-xs leading-[18px] text-white bg-[#2E82FE] p-[2px_10px] rounded-full w-fit">HIRING</div>
+                        @endif   
+                    @endif
                     <h1 class="font-extrabold text-[30px] leading-[45px]">{{$project->name}}</h1>
                     <p class="text-sm text-[#545768]">Posted at {{$project->created_at->format('d F Y')}}</p>
                 </div>
@@ -90,7 +98,23 @@
                     <img src="{{Storage::url($project->thumbnail)}}" class="w-full h-full object-cover" alt="thumbnail">
                 </div>
                 <div class="flex flex-col gap-3">
-                    <a href="{{route('front.apply_job', $project->slug)}}" class="bg-[#6635F1] p-[14px_20px] rounded-full font-semibold text-white text-center">Apply Now</a>
+
+                    @auth
+                        @if(Auth::user()->hasAppliedToProject($project->id))
+                            <a href="{{route('dashboard.proposals')}}" class="bg-[#6635F1] p-[14px_20px] rounded-full font-semibold text-white text-center">View Proposal</a>
+                        @else
+                            @if(!$project->has_finished)
+                                <a href="{{route('front.apply_job', $project->slug)}}" class="bg-[#6635F1] p-[14px_20px] rounded-full font-semibold text-white text-center">Apply Now</a>
+                            @endif
+                        @endif
+                    @endauth     
+                            
+                    @guest
+                        @if(!$project->has_started)
+                            <a href="{{route('front.apply_job', $project->slug)}}" class="bg-[#6635F1] p-[14px_20px] rounded-full font-semibold text-white text-center">Apply Now</a>
+                        @endif
+                    @endguest
+
                     <a href="" class="bg-[#030303] p-[14px_20px] rounded-full font-semibold text-white text-center">Bookmark Job</a>
                 </div>
                 <div class="flex flex-col gap-3">

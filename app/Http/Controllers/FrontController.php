@@ -20,6 +20,10 @@ class FrontController extends Controller
         return view('front.index', compact('categories', 'projects'));
     }
 
+    public function out_of_connect(){
+        return view('front.out_of_connect');
+    }
+
     public function category(Category $category){
         return view('front.category', compact('category'));
     }
@@ -32,7 +36,11 @@ class FrontController extends Controller
     public function apply_job(Project $project){
         $user = Auth::user();
 
-        if($user->connect = 0){
+        if($user->hasAppliedToProject($project->id)){
+            return redirect()->route('dashboard.proposals');
+        }
+
+        if($user->connect == 0){
             return redirect()->route('front.out_of_connect');
         }
 
@@ -46,7 +54,7 @@ class FrontController extends Controller
     public function apply_job_store(StoreApplicantRequest $request, Project $project){
         $user = Auth::user();
 
-        if($user->connect = 0){
+        if($user->connect == 0){
             return redirect()->route('front.out_of_connect');
         }else{
             $user->decrement('connect', 1);
@@ -57,7 +65,7 @@ class FrontController extends Controller
 
             $validated['freelancer_id'] = $user->id;
             $validated['project_id'] = $project->id;
-            $validated['status'] = 'waiting';
+            $validated['status'] = 'Waiting';
 
             $newApplyJob = ProjectApplicant::create($validated);
         });

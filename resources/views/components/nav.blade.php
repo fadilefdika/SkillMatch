@@ -4,21 +4,46 @@
     </a>
     <ul class="flex items-center flex-wrap gap-x-[30px]">
         <li>
-            <a href="{{route('front.index')}}" class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300 font-semibold text-[#6635F1]">Browse</a>
+            <a href="{{ route('front.index') }}" 
+               class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300 
+               {{ request()->routeIs('front.index') ? 'text-[#6635F1] font-semibold' : 'text-black' }}">
+                Browse
+            </a>
         </li>
         <li>
-            <a href="category-auth.html" class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300">Categories</a>
+            <a href="{{ route('front.index') }}" 
+               class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300 
+               {{ request()->routeIs('front.categories') ? 'text-[#6635F1] font-semibold' : 'text-black' }}">
+                Categories
+            </a>
         </li>
+        @can('apply job')
         <li>
-            <a href="" class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300">My Jobs</a>
+            <a href="{{ route('dashboard.proposals') }}" 
+               class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300 
+               {{ request()->routeIs('dashboard.proposals') ? 'text-[#6635F1] font-semibold' : 'text-black' }}">
+                My Jobs
+            </a>
         </li>
+        @endcan
+        @can('withdraw wallet')
         <li>
-            <a href="" class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300">Wallets</a>
+            <a href="{{ route('dashboard.wallet') }}" 
+               class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300 
+               {{ request()->routeIs('dashboard.wallet') ? 'text-[#6635F1] font-semibold' : 'text-black' }}">
+                Wallets
+            </a>
         </li>
+        @endcan
         <li>
-            <a href="" class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300">Help</a>
+            <a href="#" 
+               class="hover:font-semibold hover:text-[#6635F1] transition-all duration-300 
+               {{ request()->routeIs('front.help') ? 'text-[#6635F1] font-semibold' : 'text-black' }}">
+                Help
+            </a>
         </li>
     </ul>
+    
     @auth
     <a href="{{route('dashboard')}}">
         <div class="flex items-center gap-3">

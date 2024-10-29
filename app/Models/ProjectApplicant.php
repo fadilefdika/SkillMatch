@@ -19,11 +19,13 @@ class ProjectApplicant extends Model
         'message'
     ];
 
+
     public function freelancer(){
-        return $this->belongsTo(User::class, 'freelancer_id');
+        return $this->belongsTo(User::class, 'freelancer_id', 'id');
     }
 
     public function project(){
         return $this->belongsTo(Project::class);
     }
+    
 }

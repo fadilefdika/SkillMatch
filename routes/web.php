@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/category/{category:slug}', [FrontController::class, 'category'])->name('front.category');
 Route::get('/details/{project:slug}', [FrontController::class, 'details'])->name('front.details');
+Route::get('/out_of_connect', [FrontController::class, 'out_of_connect'])->name('front.out_of_connect');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -39,7 +40,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/apply/{project:slug}',[FrontController::class, 'apply_job'])->name('front.apply_job'); 
         Route::post('/apply/{project:slug}/submit', [FrontController::class, 'apply_job_store'])->name('front.apply_job.store');
         Route::get('/dashboard/proposals', [DashboardController::class, 'proposals'])->name('dashboard.proposals');
-        Route::get('/dashboard/proposal_details/{project}/{projectApplicants}', [DashboardController::class, 'proposal_details'])->name('dashboard.proposal_details');
+        Route::get('/dashboard/proposal_details/{project}/{projectApplicant}', [DashboardController::class, 'proposal_details'])->name('dashboard.proposal_details');
     });
 
     Route::prefix('admin')->name('admin.')->group(function(){
