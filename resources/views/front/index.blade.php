@@ -83,7 +83,12 @@
             </div>
         </a>
         @empty
-            <p class="text-slate-500 text-sm">Belum ada project terbaru</p>
+        <div className="flex items-center justify-center w-full h-40 bg-white shadow-md rounded-lg text-center">
+            <p className="text-gray-500 text-lg font-medium">
+              Belum ada data projek terbaru
+            </p>
+          </div>
+          
         @endforelse
         
     </div>
@@ -135,7 +140,12 @@
                 </div>
             </div>
         @empty
-            <p class="text-slate-500 text-sm">Belum ada project terbaru</p>
+        <div className="flex items-center justify-center w-full h-40 bg-white shadow-md rounded-lg text-center">
+            <p className="text-gray-500 text-lg font-medium">
+              Belum ada data projek terbaru
+            </p>
+          </div>
+          
         @endforelse
         </div>
     </div>
@@ -195,7 +205,7 @@
                             <img src="{{asset('assets/icons/perosnalcard.svg')}}" alt="icon">
                         </div>
                         <div class="flex flex-col justify-center gap-[2px]">
-                            <p class="font-semibold group-hover:underline">Gawe Academy</p>
+                            <p class="font-semibold group-hover:underline">SkillMatch Academy</p>
                             <p class="text-sm text-[#545768]">Improve your skills today</p>
                         </div>
                     </div>

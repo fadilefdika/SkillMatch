@@ -198,7 +198,12 @@
                 </div>
             </a>
             @empty
-                <p class="text-slate-500 text-sm">Belum ada project terbaru</p>
+            <div className="flex items-center justify-center w-full h-40 bg-white shadow-md rounded-lg text-center">
+                <p className="text-gray-500 text-lg font-medium">
+                  Belum ada data projek terbaru
+                </p>
+              </div>
+              
             @endforelse
 
         </div>

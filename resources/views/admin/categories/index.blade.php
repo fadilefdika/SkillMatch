@@ -41,9 +41,12 @@
                     </div>
                 </div>
                 @empty 
-                <p>
-                    Belum ada data kategori terbaru
-                </p>
+                <div className="flex items-center justify-center w-full h-40 bg-white shadow-md rounded-lg text-center">
+                    <p className="text-gray-500 text-lg font-medium">
+                      Belum ada data kategori terbaru
+                    </p>
+                  </div>
+                  
                 @endforelse
 
             </div>
