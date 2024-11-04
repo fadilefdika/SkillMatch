@@ -19,7 +19,7 @@ class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
+     */ 
     public function index()
     {
         //
@@ -84,6 +84,7 @@ class ProjectController extends Controller
             $validated['slug'] = Str::slug($validated['name']);
             $validated['has_finished'] = false;
             $validated['has_started'] = false;
+            $validated['status'] = 'Not Yet Applied';
             $validated['client_id'] = $user->id;
 
             $newProject = Project::create($validated);

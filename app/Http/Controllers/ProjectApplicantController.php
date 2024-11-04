@@ -72,6 +72,7 @@ class ProjectApplicantController extends Controller
 
             $projectApplicant->project->update([
                 'has_started' => true,
+                'status' => 'In Progress',
             ]);
         });
 

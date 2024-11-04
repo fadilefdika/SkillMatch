@@ -51,7 +51,7 @@
                         <div class="font-bold text-xs leading-[18px] text-white bg-[#F3445C] p-[2px_10px] rounded-full w-fit absolute top-[10px] left-[10px]">CLOSED</div>
                     @else
                         @if($project->has_started)
-                        <div class="font-bold text-xs leading-[18px] text-white bg-[#2E82FE] p-[2px_10px] rounded-full w-fit absolute top-[10px] left-[10px]">IN PROGRESS</div>
+                        <div style="background-color: #48BB78;" class="font-bold text-xs leading-[18px] text-white p-[2px_10px] rounded-full w-fit absolute top-[10px] left-[10px]">IN PROGRESS</div>
                         @else
                         <div class="font-bold text-xs leading-[18px] text-white bg-[#2E82FE] p-[2px_10px] rounded-full w-fit absolute top-[10px] left-[10px]">HIRING</div>
                         @endif   
@@ -109,7 +109,7 @@
                         <div class="font-bold text-xs leading-[18px] text-white bg-[#F3445C] p-[2px_10px] rounded-full w-fit">CLOSED</div>
                     @else
                         @if($project->has_started)
-                        <div class="font-bold text-xs leading-[18px] text-white bg-[#2E82FE] p-[2px_10px] rounded-full w-fit">IN PROGRESS</div>
+                        <div style="background-color: #48BB78;" class="font-bold text-xs leading-[18px] text-white p-[2px_10px] rounded-full w-fit">IN PROGRESS</div>
                         @else
                         <div class="font-bold text-xs leading-[18px] text-white bg-[#2E82FE] p-[2px_10px] rounded-full w-fit">HIRING</div>
                         @endif   

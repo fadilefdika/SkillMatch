@@ -19,6 +19,7 @@ class Project extends Model
         'client_id',
         'budget', 
         'skill_level', 
+        'status',
         'has_finished', 
         'has_started'
     ];

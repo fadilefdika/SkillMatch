@@ -16,6 +16,7 @@ class DashboardController extends Controller
     //
 
     public function proposals(){
+
         return view('dashboard.proposals');
     }
 

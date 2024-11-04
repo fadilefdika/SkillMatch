@@ -81,16 +81,10 @@
                         
                 </div>
                 @elseif($projectApplicant->status == 'Waiting')
-                {{-- <form method="POST" action="{{route('admin.reply_applicant.update', $projectApplicant->id)}}" enctype="multipart/form-data">
-                    @csrf
-
-                    <button type="submit" class="mt-2 w-full font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
-                        Approve & Hire Now
-                    </button>
-                </form> --}}
+                
                 <form method="POST" action="{{route('admin.project_applicants.update', $projectApplicant->id)}}" enctype="multipart/form-data">
                     @csrf
-@method('PUT')
+                    @method('PUT')
                     <button type="submit" class="mt-2 w-full font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                         Approve & Hire Now
                     </button>
@@ -100,8 +94,8 @@
                 @if($projectApplicant->project->has_started)
                     @if($projectApplicant->status == 'Hired')
                         @if(!$projectApplicant->project->has_finished)
-                            <hr class="my-5">
-                            <form method="POST" action="{{route('admin.complete_project.store', $projectApplicant->id)}}" enctype="multipart/form-data">
+                            <hr class="my-5"> 
+                            <form method="POST" action="#" enctype="multipart/form-data">
                                 @csrf
 
                                 <button type="submit" class="w-full font-bold py-4 px-6 bg-green-500 text-white rounded-full">
